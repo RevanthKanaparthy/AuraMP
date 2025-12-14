@@ -1,0 +1,3 @@
+@echo off
+set GEMINI_API_KEY=AIzaSyDBxGLfuIL9GaRoxjhie_Tn3jWrrcXyuLw
+python run_backend.py
