@@ -3,8 +3,8 @@
 ## Steps to Complete
 - [x] Identify and list all unnecessary files to remove
 - [x] Use Git commands to remove the files from the repository (git rm --cached for tracked files)
-- [ ] Commit the changes with a descriptive message
-- [ ] Push the changes to the GitHub repository
+- [x] Commit the changes with a descriptive message
+- [x] Push the changes to the GitHub repository
 
 ## Files to Remove
 - All test_*.py files (e.g., test_chunking_improvements.py, test_hash_match.py, test_login_fix.py, etc.)
