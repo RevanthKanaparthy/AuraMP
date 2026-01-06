@@ -1,12 +1,16 @@
-#!/usr/bin/env python
-"""Test script to verify login works"""
-import hashlib
+import bcrypt
 import jwt
 from datetime import datetime, timedelta
 
 SECRET_KEY = "your-secret-key-change-this"
 ALGORITHM = "HS256"
 ACCESS_TOKEN_EXPIRE_MINUTES = 30
+
+def hash_password(password: str) -> str:
+    return bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    return bcrypt.checkpw(plain_password.encode('utf-8'), hashed_password.encode('utf-8'))
 
 def create_access_token(data: dict):
     to_encode = data.copy()
@@ -15,14 +19,11 @@ def create_access_token(data: dict):
     encoded_jwt = jwt.encode(to_encode, SECRET_KEY, algorithm=ALGORITHM)
     return encoded_jwt
 
-def verify_password(plain_password, hashed_password):
-    return hashlib.sha256(plain_password.encode()).hexdigest() == hashed_password
-
 # Test mock users
 mock_users = {
     'admin': {
         'username': 'admin',
-        'password': hashlib.sha256('admin123'.encode()).hexdigest(),
+        'password': hash_password('admin123'),
         'role': 'admin',
         'name': 'Administrator',
         'department': 'Admin'

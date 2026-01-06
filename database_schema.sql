@@ -29,7 +29,7 @@ CREATE TABLE documents (
     file_path VARCHAR(1000),
     file_size_bytes BIGINT,
     department VARCHAR(100) NOT NULL,
-    category VARCHAR(100) NOT NULL CHECK (category IN ('research', 'patent', 'publication', 'project', 'proposal')),
+    category VARCHAR(100) NOT NULL CHECK (category IN ('research', 'patent', 'publication', 'project', 'proposal', 'test')),
     uploaded_by VARCHAR(100) NOT NULL,
     uploaded_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     version INTEGER DEFAULT 1,
@@ -211,10 +211,10 @@ CREATE TRIGGER update_research_projects_updated_at
 
 -- Insert sample users
 INSERT INTO users (username, password_hash, role, name, email, department) VALUES
-('admin', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyYNv3sBhUqm', 'admin', 'System Admin', 'admin@mvsrec.edu.in', NULL),
-('faculty1', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyYNv3sBhUqm', 'faculty', 'Dr. Sandhya Banda', 'sandhya@mvsrec.edu.in', 'CSE'),
-('faculty2', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyYNv3sBhUqm', 'faculty', 'Dr. Priya Sharma', 'priya@mvsrec.edu.in', 'ECE'),
-('student1', '$2b$12$LQv3c1yqBWVHxkd0LHAkCOYz6TtxMQJqhN8/LewY5GyYNv3sBhUqm', 'student', 'John Doe', 'john@student.mvsrec.edu.in', 'CSE');
+('admin', '$2b$12$5OJOHEZD7CuJijeMzjePQOngR4sEXs3JVnAW999l9OZZD8eZnN.g3O', 'admin', 'System Admin', 'admin@mvsrec.edu.in', NULL),
+('faculty1', '$2b$12$8hydC2r7DGwdYR8TqrOE9.Z0ElYPEHVUMIRQe3JddL4jUj2h199OnC', 'faculty', 'Dr. Sandhya Banda', 'sandhya@mvsrec.edu.in', 'CSE'),
+('faculty2', '$2b$12$i49w326ty6Y9.fmfGWpL0.DkqOzI73TrMqHGPx7NN7zE0lVZSpIO6C', 'faculty', 'Dr. Priya Sharma', 'priya@mvsrec.edu.in', 'ECE'),
+('student1', '$2b$12$1r9sEzD6lquRUIpJlyr4Gu7yh4ZChfMizDSwyEVQQ4Ht15Qb/0AVWa', 'student', 'John Doe', 'john@student.mvsrec.edu.in', 'CSE');
 
 -- Create views for common queries
 

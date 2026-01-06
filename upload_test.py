@@ -2,10 +2,11 @@ import http.client
 import urllib.parse
 import json
 import mimetypes
+from openpyxl import Workbook
 
 TOKEN_USER = 'admin'
 TOKEN_PASS = 'admin123'
-FILEPATH = 'test_upload.docx'
+FILEPATH = 'test_upload.xlsx'
 
 # get token
 conn = http.client.HTTPConnection('localhost', 8000)
@@ -42,7 +43,14 @@ lines.append('research')
 
 # file
 filename = FILEPATH
-ctype = 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+ctype = 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+# generate a simple XLSX file for testing
+wb = Workbook()
+ws = wb.active
+ws.title = "CNN"
+ws.append(["Title", "Content"])
+ws.append(["CNN", "A convolutional neural network (CNN) is a deep learning model designed for processing data with grid-like topology, such as images. It uses convolutional layers to automatically and adaptively learn spatial hierarchies of features."])
+wb.save(FILEPATH)
 with open(FILEPATH, 'rb') as f:
     filedata = f.read()
 

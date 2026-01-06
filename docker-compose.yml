@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  fastapi-backend:
+    build: .
+    ports:
+      - "8000:8000"
+    # This is the "magic" line that fixes the 'host.docker.internal' error
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    environment:
+      - DATABASE_URL=postgresql://mvsr_user:Aura2451@host.docker.internal:5432/mvsr_rag
+      - OLLAMA_URL=http://host.docker.internal:11434/api/generate
+    volumes:
+      - .:/app
+    restart: always
+
+# Note: This assumes Postgres and Ollama are running natively on your Windows host.
