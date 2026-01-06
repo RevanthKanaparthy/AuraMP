@@ -1,0 +1,23 @@
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+
+# App data
+uploads/
+chroma_db/
+
+# Logs and environment
+*.log
+.env
+
+# Local binaries and rewrite artifacts
+postgresql-installer.exe
+.git-rewrite/
+
+# IDE
+.vscode/
+.idea/
